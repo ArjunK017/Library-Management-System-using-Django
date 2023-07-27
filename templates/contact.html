@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/contstyle.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div style="text-align:center">
+          <h2>Contact Us</h2>
+          <p>Swing by for a cup of coffee, or leave us a message:</p>
+        </div>
+        <div class="row">
+          
+          <div class="column">
+            <form id="submit-form" action="">
+              <label for="fname">Full Name</label>
+              <input type="text" id="fname" name="name" placeholder="Your name..">
+              <label for="lname">Email</label>
+              <input type="text" id="lname" name="email" placeholder="Your email address..">
+              <input type="text" id="sem" name="Semester" placeholder="Semester">
+              <label for="country">Department</label>
+              <select id="country" name="Department">
+                <option value="CSE">CSE</option>
+                <option value="ECE">ECE</option>
+                <option value="EEE">EEE</option>
+                <option value="CyberSecurity">Polymer</option>
+                <option value="CyberSecurity">CyberSecurity</option>
+              </select>
+              <label for="Subject">Subject</label>
+              <select id="Subject" name="Subject">
+                <option value="Book Renewal">Book Renewal Request</option>
+                <option value="Other Issues">Other Issues</option></select>
+              <textarea id="subject" name="message" placeholder="Write something.." style="height:170px"></textarea>
+              <input type="submit" value="Submit">
+            </form>
+          </div>
+        </div>
+      </div>
+      <script>
+        $("#submit-form").submit((e)=>{
+            e.preventDefault()
+            $.ajax({
+                url:"https://script.google.com/macros/s/AKfycbweE3TPz8ny6_kEi9P-khLFY1AJj0fjo8k5mi-etVDST2-ZCR79N-oVh3wOKgNHmX4P/exec",
+                data:$("#submit-form").serialize(),
+                method:"post",
+                success:function (response){
+                    alert("Form submitted successfully")
+                    window.location.reload()
+                    //window.location.href="https://google.com"
+                },
+                error:function (err){
+                    alert("Something Error")
+    
+                }
+            })
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #240082;
+    color: #240082;
+    padding: 20px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+main {
+    margin: 20px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="date"] {
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+form button[type="submit"] {
+    background-color: #green;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#book-listings ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#book-listings li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#book-listings img {
+    width: 100px;
+    margin-right: 20px;
+}
+
+#book-listings h3 {
+    margin: 0;
+}
+
+#book-listings p {
+    margin: 0;
+}
+
+#book-listings button[type="button"],
+#book-listings button[disabled] {
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#book-listings button[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#reservation-form {
+    display: none;
+}
+
+#reservation-form h2 {
+    margin-top: 0;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}

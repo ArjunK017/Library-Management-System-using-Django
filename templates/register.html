@@ -1,0 +1,127 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'fonts_log/icomoon/style.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css_log/owl.carousel.min.css' %}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css_log/bootstrap.min.css' %}">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="{% static 'css_log/style.css' %}">
+
+    <title>LIBRA-signup</title>
+    <link rel="website icon" type="png" href="{% static 'images/Capture.PNG' %}">
+  </head>
+  <body>
+  <div class="content">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6 contents">
+          <div class="row justify-content-center">
+            <div class="col-md-12">
+              <div class="form-block">
+                  <div class="mb-4">
+                      <h1>User Registration Page</h1>
+                </div>
+                  <span class="mb-0 text-muted">
+                {% if msg %}
+                    {{ msg | safe }}
+                {% else %}
+                    Login page
+                {% endif %}
+              </span>
+                <form  method="post">
+                    {% csrf_token %}
+                  <div class="form-group first">
+                    <label for="username">Username</label>
+                      {{ form.username }}
+                  </div>
+                  <div class="form-group first">
+                    <label for="first_name">First name</label>
+                      {{ form.first_name }}
+                  </div>
+                  <div class="form-group first">
+                    <label for="last_name">Last name</label>
+                      {{ form.last_name }}
+                  </div>
+                  <div class="form-group first">
+                    <label for="email">Email</label>
+                      {{ form.email}}
+                  </div>
+                  <div class="form-group last mb-4">
+                    <label for="password">Password</label>
+                      {{ form.password1 }}
+                  </div>
+                  <div class="form-group last mb-4">
+                    <label for="password">Confirm Password</label>
+                      {{ form.password2 }}
+                  </div>
+                  <div class="d-flex mb-5 align-items-center">
+                    <label class="control control--checkbox mb-0"><span class="caption">Admin</span>
+                        {{ form.is_admin }}
+                      <div class="control__indicator"></div>
+                    </label>
+                  </div>
+                  <div class="d-flex mb-5 align-items-center">
+                    <label class="control control--checkbox mb-0"><span class="caption">Student</span>
+                        {{ form.is_student }}
+                      <div class="control__indicator"></div>
+                    </label>
+                  </div>
+                  <div class="d-flex mb-5 align-items-center">
+                    <label class="control control--checkbox mb-0"><span class="caption">Teacher</span>
+                        {{ form.is_teacher }}
+                      <div class="control__indicator"></div>
+                    </label>
+                  </div>
+                    <span class="text-error">{{ form.errors }}</span>
+                  <input type="submit"  value="Register" class="btn btn-pill text-white btn-block btn-primary"<a href="{% url 'adminpage' %}">
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <script>
+    const checkboxAdmin = document.querySelector('input[name="is_admin"]');
+    const checkboxStudent = document.querySelector('input[name="is_student"]');
+    const checkboxTeacher = document.querySelector('input[name="is_teacher"]');
+  
+  checkboxAdmin.addEventListener('change', function() {
+    if (this.checked) {
+      checkboxStudent.checked = false;
+      checkboxTeacher.checked = false;
+    }
+  });
+  
+  checkboxStudent.addEventListener('change', function() {
+    if (this.checked) {
+      checkboxAdmin.checked = false;
+      checkboxTeacher.checked = false;
+    }
+  });
+  checkboxTeacher.addEventListener('change', function() {
+    if (this.checked) {
+      checkboxAdmin.checked = false;
+      checkboxStudent.checked = false;
+    }
+  });
+  </script>
+
+    <script src="{% static 'js_log/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js_log/popper.min.js' %}"></script>
+    <script src="{% static 'js_log/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js_log/main.js' %}"></script>
+  </body>
+</html>

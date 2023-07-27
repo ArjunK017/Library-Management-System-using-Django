@@ -1,0 +1,49 @@
+{%load static%}
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Font+Name&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/tableb.css' %}">
+  <style>
+    .form-container {
+      position: relative;
+      z-index: 1;
+      background-image: url("{% static 'images/bslot1.jpg' %}");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .container img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+    button {
+      background-color: #FE0101;
+      color: #ffffff;
+      padding: 10px 20;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<div class="container">
+  <img src="{% static 'images/bslot2.jpg' %}">
+  <div class="form-container">
+    <h2>Book a Time Slot</h2>
+    <form method="POST">
+      {% csrf_token %}
+      <label for="start_time">Start Time:</label>
+      {{ form.start_time }}
+      <br><br>
+      <label for="end_time">End Time:</label>
+      {{ form.end_time }}
+      <br><br>
+      <button type="submit">Book Slot</button>
+    </form>
+    <button type="button" onclick="goBack()">Back</button>
+  </div>
+</div>
+<script>
+  function goBack() {
+    window.history.back();
+  }
+  </script>

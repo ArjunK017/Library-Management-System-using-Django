@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="{% static 'styles.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'main.css' %}">
+    <title>Teacher page</title>
+    <link rel="stylesheet" href="{% static 'css/t_style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+  </head>
+  <body>
+    <input type="checkbox" id="check">
+    <label for="check">
+      <i class="fas fa-bars" id="btn"></i>
+      <i class="fa fa-arrow-circle-left" id="cancel"></i>
+    </label>
+    <header>
+        <nav>
+            <ul class="nav__links">
+                
+                <li><a href="{% url 'bookreserve' %}">Reserve book</a></li>
+            </ul>
+        </nav>
+        <form method="get" action="{% url 'r1_Search' %}">
+          <div class="filter-container">
+            <select name="query2" id="query2">
+              <option value="">Select Semester</option>
+              <option value="1">S1</option>
+              <option value="2">S2</option>
+              <option value="3">S3</option>
+              <option value="4">S4</option>
+              <option value="5">S5</option>
+              <option value="6">S6</option>
+              <option value="7">S7</option>
+              <option value="8">S8</option>
+            </select>
+            <select name="query2" id="query2">
+              <option value="">Select Branch</option>
+              <option value="CSE">CSE</option>
+              <option value="ECE">ECE</option>
+              <option value="Polymer">Polymer</option>
+              <option value="EEE">EEE</option>
+              <option value="Cybersecurity">Cybersecurity</option>
+            </select>
+            <input type="text" placeholder="Search by Book Name" name="query2" id="query2">
+            <button type="submit">Search</button>
+          </div>
+        </form>
+        
+    </header>
+    <div id="mobile__menu" class="overlay">
+        <a class="close">&times;</a>
+        <div class="overlay__content">
+            <a href="#">Notifications</a>
+            <a href="#">Alerts</a>
+            <a href="#">About</a>
+        </div>
+    </div>
+    <div class="sidebar">
+        <a class="logo" href="/"><img src="{% static 'images/teach.png' %}" alt="logo"></a>
+        <h1 class="sp">{{user.username}}</h1>
+    <ul>
+     
+     <li><a href="{% url 'borrowbook' %}"><i class="fa fa-book" aria-hidden="true"></i>Borrowed Books</a></li>
+     <li><a href="{% url 'borrowhistory' %}"><i class="fa fa-history" aria-hidden="true"></i>Borrow History</a></li>
+     <li><a href="{% url 'viewresbook' %}"><i class="fas fa-stream"></i>Reserved Books </a></li>
+     <li><a href="{% url 'book_slot' %}"><i class="fas fa-stream"></i>Table Booking </a></li>
+     <li><a href="{% url 'review_history' %}"><i class="fas fa-stream"></i>Review History </a></li>
+     <li><a href="{% url 'about' %}"><i class="far fa-question-circle"></i>About</a></li>
+     <li><a href="{% url 'contact' %}"><i class="far fa-envelope"></i>Contact us</a></li>
+     <li><a href="{% url 'logout_view' %}"><i class="fa fa-times-circle" aria-hidden="true"></i>Logout</a></li>
+
+    </ul>
+   </div>
+   <div class="box-1">
+    <div class="table-container">
+                                        <table class="table" id="dataTable" width="100%" cellspacing="0">
+                                           <thead>
+                                                <tr>
+                                                    <th>Book Id</th>
+                                                    <th>Book Name</th>
+                                                    <th>Semester</th>
+                                                    <th>Branch</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                        {% for info in Book %}
+                                                <tr>
+                                                    <td data-label="bookid">{{info.bookid}}</td>
+                                                    <td data-label="bookname">{{info.bookname}}</td>
+                                                    <td data-label="sem">{{info.sem}}</td>
+                                                    <td data-label="subject">{{info.subject}}</td>
+                                                    <td data-label="category">{{info.category}}</td>
+                                                    
+                                                </tr>
+                                     
+                                        {% endfor %}
+                                        </tbody>
+                                        </table>
+        </div>
+    </div>
+   <section>
+   </section>
+   <footer>
+   </footer>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Book Review</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
+    <style>
+    /* Existing styles... */
+
+    .review-form {
+        margin-top: 20px;
+    }
+
+    .review-form input[type="text"],
+    .review-form textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .review-form button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+    </style>
+</head>
+<body>
+    <h2>Write a Review</h2>
+    <form method="POST" action="{% url 'submit_review' %}">
+      {% csrf_token %}
+      <input type="hidden" name="book_name" value="{{ book_id }}">
+      <label for="review_text">Review:</label><br>
+      <textarea name="review_text" rows="6" cols="90"></textarea><br>
+      <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

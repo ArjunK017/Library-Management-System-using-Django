@@ -1,0 +1,19 @@
+{% block content %}
+<h2>Review History</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Book Name</th>
+      <th>Review</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for review in reviews %}
+      <tr>
+        <td>{{ review.book_name }}</td>
+        <td>{{ review.review_text }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
